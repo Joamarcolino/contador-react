@@ -47,7 +47,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  min-width: 100vw;
   margin: 0;
 }
 
@@ -63,7 +64,7 @@ button:hover {
   color: yellow;
   text-shadow: 1px 1px 10px;
 }
-section {
+ section{
   display: flex;
   justify-items: center;
   align-items: center;
@@ -76,6 +77,7 @@ section {
   border: solid grey;
   padding: 10px;
   box-shadow: 1px 1px 20px ;
+  transition: border-color 2s;
 }
 
 .buttons {
@@ -85,16 +87,19 @@ h1,
 p,
 button {
   color:  white;
+  transition: text-shadow, color 2s;
 }
 p {
   padding-top: 30px;
   font-style: italic;
   font-size: 60px;
+  transition: text-shadow, color 2s;
 }
 h1 {
   font-family: italic;
   text-decoration:wavy;
   font-weight: 900;
+  transition: text-shadow, color 2s;
 }
 button {
   cursor: pointer;  
@@ -115,21 +120,25 @@ button {
   background-color: grey;
 
 }
-.zerar{
-  background: linear-gradient( yellow, red);   
+#zerar{
+  transition: text-shadow, color 2s ease;
 }
-.zerar:hover{
+
+#zerar:hover{
   transform: scale(1.1);
-  transition: 0.4 ease;
+  transition: 0.2 ease;
   color: white;
-  box-shadow: 1px 1px 10px; 
+  opacity:1; 
 }
 
 .negativebright{
   text-shadow: 1px 1px 10px ;
   color: red;
+  opacity: 1;
 }
 .positivebright{
   text-shadow: 1px 1px 10px ;
   color: yellow;
+  opacity: 1;
+  
 }

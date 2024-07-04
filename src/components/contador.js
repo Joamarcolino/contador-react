@@ -1,78 +1,59 @@
 import '../App.css';
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 
-function Contador() {
+export default function Contador() {
+  console.log("Renderizando Contador()")
   let [numero, setNumero] = useState(0)
-  const [Brilho, setBrilho] = useState('')
-
-  // dar brilho quando chegar ao 1 milhão positivo e negativo respectivamente.
- useEffect(()=>{
-    if (numero > 999999){
-        setBrilho('positivebright')
-    } else if (numero > 999999){
-        setBrilho('negativebright')
-    } else {
-        setBrilho('')
-    }
-   } , [numero])
-
-   useEffect(()=>{
-    if (numero > 999999 || numero > 999999){
-        const tempo = (setTimeout(() => {
-            setNumero(0)
-        }, 1000)) //espera 2 minutos antes de resetar o numero
-        return () => clearTimeout(tempo)
-    }
-   } , [numero])
-   
-
-  //código do muda cor de fundo de acordo com o valor positivo, negativo e neutro do estado da aplicação
-  useEffect(() => {
-    if (numero > 0) {
-      document.body.className = 'positive';
-    } else if (numero < 0) {
-      document.body.className = 'negative';
-    } else {
-      document.body.className = 'neutral';
-    }
-  }, [numero]);
-
-
- // mudar o valor do numero no console.
-  useEffect(() => {
-    window.setNumeroGlobal = (value) => setNumero(value);
-    return () => {
-      delete window.setNumeroGlobal;
-    };
-  }, []);
+  const maxNumero = 100000
+  const minNumero = -100000
   
-  //muda valor
+  //adiciona valor
   function add(value) {
-    setNumero(numero + value)
+    setNumero((prevNumero) => {
+      const newNumero = prevNumero + value;
+      if (newNumero > maxNumero) return maxNumero;
+      if (newNumero < minNumero) return minNumero;
+      return newNumero;
+    });
+  }
+ 
+  //cor negativa e positiva do body de acordo com o valor do numero.
+  function getBodyClass() {
+    if (numero < 0) return 'negative'
+    if (numero > 0) return 'positive'
+    return 'neutral'
+
+  //cor negativa brilhante e positiva brilhante do p e h1 de acordo com o valor do numero
+  }
+  function changeBrightnesscolor(){
+    if (numero > 0) return 'positivebright'
+    if (numero < 0) return 'negativebright'
+    return ''
   }
 
+  // conteudo HTML
   return (
-    <section>
-      <header className= 'title'>
-        <h1>Ｃｏｎｔａｄｏｒ</h1>
-      </header>
-      <main className= 'calc'>
-        <p className= {Brilho}>{numero}</p>
-      </main>
-      <footer className='buttons'>
-        <button className='menos1000'onClick={()=>add(-1000)}>-1000</button>
-        <button className='menos100'onClick={()=>add(-100)}>-100</button>
-        <button className='menos10'onClick={()=>add(-10)}>-10</button>
-        <button className='menos' onClick={()=>add(-1)}>-1</button>
-        <button className='zerar' onClick={()=> setNumero(0)}>RESET</button>
-        <button className='mais' onClick={()=>add(1)}>+1</button>
-        <button className='mais10' onClick={()=>add(10)}>+10</button>
-        <button className='mais100' onClick={()=>add(100)}>+100</button>
-        <button className='mais1000' onClick={()=>add(1000)}>+1000</button>
-      </footer>
-    </section>
-  )
-} 
-
-export{Contador}
+    <body className={getBodyClass()}>
+      <section >
+        <header className= 'title'>
+          <h1 className={changeBrightnesscolor()}>Ｃｏｎｔａｄｏｒ</h1>
+        </header>
+        <main className= 'calc'>
+          <p className={changeBrightnesscolor()}>{numero}</p>
+        </main>
+        <footer className='buttons'>
+          <button  className='menos1000'onClick={()=>add(-1000)}>-1000</button>
+          <button  className='menos100'onClick={()=>add(-100)}>-100</button>
+          <button  className='menos10'onClick={()=>add(-10)}>-10</button>
+          <button  className='menos' onClick={()=>add(-1)}>-1</button>
+          <button id='zerar' className={changeBrightnesscolor()} onClick={()=> setNumero(0)}>RESET</button>
+          <button  className='mais' onClick={()=>add(1)}>+1</button>
+          <button  className='mais10' onClick={()=>add(10)}>+10</button>
+          <button  className='mais100' onClick={()=>add(100)}>+100</button>
+          <button  className='mais1000' onClick={()=>add(1000)}>+1000</button>
+        </footer>
+      </section>
+    </body>
+ )
+}
