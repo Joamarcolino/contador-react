@@ -8,12 +8,12 @@ export default function Contador() {
   const maxNumero = 100000
   const minNumero = -100000
   
-  //adiciona valor
+ //limitador do contador de 100.000 e -100000
   function add(value) {
     setNumero((prevNumero) => {
       const newNumero = prevNumero + value;
-      if (newNumero > maxNumero) return maxNumero;
-      if (newNumero < minNumero) return minNumero;
+      if (newNumero > maxNumero) return maxNumero | changeBrightnesscolor(positive);
+      if (newNumero < minNumero) return minNumero | changeBrightnesscolor(negative);
       return newNumero;
     });
   }
