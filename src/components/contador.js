@@ -3,8 +3,10 @@ import { useState } from "react"
 
 
 export default function Contador() {
-  console.log("Renderizando Contador()")
+
   let [numero, setNumero] = useState(0)
+
+  //numero maximo e minimo 
   const maxNumero = 100000
   const minNumero = -100000
   
@@ -12,8 +14,8 @@ export default function Contador() {
   function add(value) {
     setNumero((prevNumero) => {
       const newNumero = prevNumero + value;
-      if (newNumero > maxNumero) return maxNumero | changeBrightnesscolor(positive);
-      if (newNumero < minNumero) return minNumero | changeBrightnesscolor(negative);
+      if (newNumero > maxNumero) return maxNumero
+      if (newNumero < minNumero) return minNumero 
       return newNumero;
     });
   }
@@ -24,9 +26,9 @@ export default function Contador() {
     if (numero > 0) return 'positive'
     return 'neutral'
 
-  //cor negativa brilhante e positiva brilhante do p e h1 de acordo com o valor do numero
+  //cor negativa brilhante e positiva brilhante do <p>P</p> e <h1>H1</h1> de acordo com o valor do numero
   }
-  function changeBrightnesscolor(){
+  function changeBrightnesscolor() {
     if (numero > 0) return 'positivebright'
     if (numero < 0) return 'negativebright'
     return ''
