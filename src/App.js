@@ -1,11 +1,12 @@
 import './App.css';
-import  Contador  from './components/contador';
+import Contador from './components/contador';
 
 export default function App() {
-  return(
+  return (
     <div>
-    <Contador />
+      <Contador />
+      <Contador />
     </div>
   )
-  
+
 }  
