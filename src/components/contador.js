@@ -1,21 +1,28 @@
-import '../App.css';
+import './App.css';
 import { useState } from "react"
 
 
 export default function Contador() {
+  const [numero, setNumero] = useState(0);
+  const [limitBroken, setLimitBroken] = useState(0);
+  const [maxNumero, setMaxNumero] = useState(100000);
+  const [minNumero, setMinNumero] = useState(-100000);
+  const [multiplier, setMultiplier] = useState(1);
 
-  let [numero, setNumero] = useState(0)
+  function add(baseValue) {
+    const realValue = Math.round(baseValue * multiplier); // aplica o multiplicador e arredonda
 
-  //numero maximo e minimo 
-  const maxNumero = 100000
-  const minNumero = -100000
-
-  //limitador do contador de 100.000 e -100000
-  function add(value) {
     setNumero((prevNumero) => {
-      const newNumero = prevNumero + value;
-      if (newNumero > maxNumero) return maxNumero
-      if (newNumero < minNumero) return minNumero
+      const newNumero = prevNumero + realValue;
+
+      if (newNumero > maxNumero || newNumero < minNumero) {
+        setLimitBroken((prev) => prev + 1);
+        setMaxNumero((prev) => prev + 10000);
+        setMinNumero((prev) => prev - 10000);
+        setMultiplier((prev) => parseFloat((prev * 1.1).toFixed(2))); // aumenta o multiplicador
+        return 0;
+      }
+
       return newNumero;
     });
   }
@@ -37,7 +44,12 @@ export default function Contador() {
   // conteudo HTML
   return (
     <body className={getBodyClass()}>
-      <section >
+      <section id='showstats' >
+        <div>
+          <h1 id='limitbreaker'>Limit breaks: {limitBroken}</h1>
+          <li className='stats'>Current Limit Range: {minNumero} to {maxNumero}</li>
+          <li className='stats'>Multiplier: x{multiplier.toFixed(2)}</li>
+        </div>
         <header className='title'>
           <h1 className={changeBrightnesscolor()}>Ｃｏｎｔａｄｏｒ</h1>
         </header>

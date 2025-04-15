@@ -76,6 +76,7 @@ button:hover {
   min-height: 40vh;
   border: solid grey;
   padding: 10px;
+  width: auto;
   box-shadow: 1px 1px 20px ;
   transition: border-color 2s;
 }
@@ -91,8 +92,7 @@ button {
 }
 p {
   padding-top: 30px;
-  font-style: italic;
-  font-size: 60px;
+  font-size: 100px;
   transition: text-shadow, color 2s;
 }
 h1 {
@@ -141,4 +141,30 @@ button {
   color: yellow;
   opacity: 1;
   
+}
+#limitbreaker{
+  font-size: 20px;
+  transition: 2s;
+  color: purple;
+  opacity: 10%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+#limitbreaker:hover{
+  opacity: 50%;
+  text-shadow: 1px 1px 10px rgb(153, 22, 153);
+}
+li{
+  color: purple;
+  opacity: 10%;
+  font-size: 12px;
+  text-decoration: none;
+  transition: 2s;
+}
+li:hover{
+  opacity: 50%;
+  text-shadow: 1px 1px 10px rgb(153, 22, 153);
+}
+#showstats:hover{
 }
