@@ -38,13 +38,13 @@
 }
 
 *{
-  box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 body {
   font-family: Arial, sans-serif;
   transition: background-color 2s;
-  display: flex;
+  display: grid;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
@@ -100,6 +100,7 @@ h1 {
   text-decoration:wavy;
   font-weight: 900;
   transition: text-shadow, color 2s;
+  text-align: center;
 }
 button {
   cursor: pointer;  
@@ -145,26 +146,49 @@ button {
 #limitbreaker{
   font-size: 20px;
   transition: 2s;
-  color: purple;
-  opacity: 10%;
+  color: white;
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-self: center;
+  gap: 10px;
 }
 #limitbreaker:hover{
   opacity: 50%;
   text-shadow: 1px 1px 10px rgb(153, 22, 153);
 }
 li{
-  color: purple;
-  opacity: 10%;
+  color: white;
   font-size: 12px;
   text-decoration: none;
   transition: 2s;
+  display: flex;
+  flex-direction: column;
 }
 li:hover{
   opacity: 50%;
   text-shadow: 1px 1px 10px rgb(153, 22, 153);
 }
-#showstats:hover{
+#showstats {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  gap: 10px;
+  min-height: 100px;
+  max-width: 300px;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  border: solid white 1px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.6); 
+  z-index: 999; 
+}
+h2{
+  color: rgb(255, 136, 0);
+  transition: 2s;
+}
+h3{
+  position: auto;
+  transition: 2s;
 }

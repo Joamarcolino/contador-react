@@ -11,28 +11,23 @@ export default function Contador() {
 
   function add(baseValue) {
     const realValue = Math.round(baseValue * multiplier); // aplica o multiplicador e arredonda
-
     setNumero((prevNumero) => {
       const newNumero = prevNumero + realValue;
-
       if (newNumero > maxNumero || newNumero < minNumero) {
         setLimitBroken((prev) => prev + 1);
-        setMaxNumero((prev) => prev + 10000);
-        setMinNumero((prev) => prev - 10000);
-        setMultiplier((prev) => parseFloat((prev * 1.1).toFixed(2))); // aumenta o multiplicador
+        setMaxNumero((prev) => parseFloat((prev * 1.2).toFixed(2)));
+        setMinNumero((prev) => parseFloat((prev * 1.2).toFixed(2)));
+        setMultiplier((prev) => parseFloat((prev * 1.1).toFixed(3))); // aumenta o multiplicador
         return 0;
       }
-
       return newNumero;
     });
   }
-
   //cor negativa e positiva do body de acordo com o valor do numero.
   function getBodyClass() {
     if (numero < 0) return 'negative'
     if (numero > 0) return 'positive'
     return 'neutral'
-
     //cor negativa brilhante e positiva brilhante do <p>P</p> e <h1>H1</h1> de acordo com o valor do numero
   }
   function changeBrightnesscolor() {
@@ -40,15 +35,14 @@ export default function Contador() {
     if (numero < 0) return 'negativebright'
     return ''
   }
-
   // conteudo HTML
   return (
     <body className={getBodyClass()}>
-      <section id='showstats' >
-        <div>
-          <h1 id='limitbreaker'>Limit breaks: {limitBroken}</h1>
-          <li className='stats'>Current Limit Range: {minNumero} to {maxNumero}</li>
-          <li className='stats'>Multiplier: x{multiplier.toFixed(2)}</li>
+      <section  >
+        <div id='showstats'>
+          <h1 id='limitbreaker'>Limit breaks:<h2> {limitBroken}</h2></h1>
+          <li className='stats'>Current Limit Range: <h3 id='minnumero'> {minNumero} </h3> to <h3 id='maxnumero'> {maxNumero} </h3> </li>
+          <li className='stats'>Multiplier: <h3>x{multiplier.toFixed(2)}</h3></li>
         </div>
         <header className='title'>
           <h1 className={changeBrightnesscolor()}>Ｃｏｎｔａｄｏｒ</h1>
