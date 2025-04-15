@@ -192,3 +192,70 @@ h3{
   position: auto;
   transition: 2s;
 }
+@media only screen and (max-width: 600px) {
+  body {
+    padding: 10px;
+    display: block;
+    text-align: center;
+  }
+
+  section {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    margin: 0 auto;
+  }
+
+  .title h1 {
+    font-size: 24px;
+  }
+
+  .calc p {
+    font-size: 50px;
+  }
+
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 18px;
+    gap: 5px;
+  }
+
+  button {
+    padding: 8px 12px;
+    font-size: 14px;
+    margin: 4px;
+    flex: 1 1 40%;
+    min-width: 80px;
+  }
+
+  #showstats {
+    position: relative;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 12px;
+    text-align: left;
+  }
+
+  #limitbreaker {
+    font-size: 16px;
+  }
+
+  li.stats {
+    font-size: 12px;
+  }
+
+  h2, h3 {
+    display: inline;
+    font-size: 14px;
+  }
+}
